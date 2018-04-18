@@ -7,6 +7,21 @@ endif(COMMAND cmake_policy)
 
 project(libroboint C)
 
+find_path(LIBUSB_INCLUDE_DIR
+    NAMES libusb.h
+    PATH_SUFFIXES "include" "libusb" "libusb-1.0"
+)
+
+find_library(LIBUSB_LIBRARY
+    NAMES usb
+    PATH_SUFFIXES "lib" "lib32" "lib64"
+    DOC "Install libusb by running sudo '# dnf install libusb-devel' on RedHat
+    based distros or '# apt-get install libusb-dev' on Debian based distros!"
+)
+if (NOT LIBUSB_LIBRARY OR NOT LIBUSB_INCLUDE_DIR)
+    message(FATAL_ERROR "Install libusb by running sudo '# dnf install libusb-devel' on RedHat based distros or '# apt-get install libusb-dev' on Debian based distros!")
+endif ()
+
 # tgz
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "libroboint")
 SET(CPACK_PACKAGE_VENDOR "Erik Andresen")
