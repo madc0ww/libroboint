@@ -16,7 +16,7 @@ find_library(LIBUSB_LIBRARY
     NAMES usb
     PATH_SUFFIXES "lib" "lib32" "lib64"
     DOC "Install libusb by running sudo '# dnf install libusb-devel' on RedHat
-    based distros or '# apt-get install libusb-dev' on Debian based distros!"
+    based distros or '# apt-get install libusb-1.0.0-dev' on Debian based distros!"
 )
 if (NOT LIBUSB_LIBRARY OR NOT LIBUSB_INCLUDE_DIR)
     message(FATAL_ERROR "Install libusb by running sudo '# dnf install libusb-devel' on RedHat based distros or '# apt-get install libusb-dev' on Debian based distros!")
